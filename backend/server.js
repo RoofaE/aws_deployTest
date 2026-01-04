@@ -3,7 +3,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 // Middleware
 app.use(cors());
@@ -14,6 +14,11 @@ let tasks = [
     { id: 1, title: 'Learn Node.js', completed: false },
     { id: 2, title: 'Build a project', completed: false }
 ];
+
+// Health check endpoint for AWS
+app.get('/health', (req, res) => {
+    res.status(200).json({ status: 'OK' });
+});
 
 // Routes
 app.get('/api/tasks', (req, res) => {
@@ -46,5 +51,5 @@ app.delete('/api/tasks/:id', (req, res) => {
 });
 
 app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
+    console.log(`Server running on port ${PORT}`);
 });

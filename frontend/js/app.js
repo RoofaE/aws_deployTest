@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:3000/api/tasks';
+const API_URL = 'http://task-manager-env.eba-kn2jhbpr.us-west-2.elasticbeanstalk.com/api/tasks';
 
 const taskInput = document.getElementById('taskInput');
 const addBtn = document.getElementById('addBtn');
